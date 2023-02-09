@@ -12,3 +12,4 @@ function fun2() {
 
 console.log(teacher);
 fun();
+fun2();
