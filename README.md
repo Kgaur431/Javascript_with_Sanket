@@ -65,8 +65,14 @@ Javascript
                 target references means we are assigning a value to a variable.
         
         7. Undefined vs Undeclared 
-            
-            
+            visit the docs.google.com 
+
+        8. Hoisting
+            the phenomenon to call the function before declaring it is called hoisting.
+                it is direct result of lexical scoping that happens in JS, due to which we are able to access some function & variable before declaring it. which gives us a notion that they are moved up in the file. 
+        9. Strict Mode
+                in strict mode autoglobals will BE prehibited.
+        
 
 
           
