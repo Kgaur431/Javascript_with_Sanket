@@ -72,6 +72,36 @@ Javascript
                 it is direct result of lexical scoping that happens in JS, due to which we are able to access some function & variable before declaring it. which gives us a notion that they are moved up in the file. 
         9. Strict Mode
                 in strict mode autoglobals will BE prehibited.
+        10. Function Defination vs Function Expression
+            10.1 Function Defination
+                function fun() {
+                    // code
+                }
+                   In execution phase we don't do any evaluation. means we just declaring a function
+            10.2 Function Expression
+                var fun = function() {
+                    // code
+                }
+                    In execution phase we do evaluation. means we are assigning a function to a variable. 
+                10.2.1 Function exrpression are of two types.
+                    1. Named Function Expression
+                        var x = function fun() {
+                            // code
+                        }
+                    2. Anonymous Function Expression
+                                        In production level code we will get the stack trace & last function is one where the error happened. if we put anonymous function then we will not able to trace which fun called or which not. 
+
+                        var x = function() {
+                            // code
+                        }
+                                ||
+                        gun(function() {
+                            // code
+                        })
+        12. Trace
+                console.trace(); // it will show the call stack, 
+                    Trace will give us the code pointer from which the function called.
+                
         
 
 
