@@ -101,6 +101,44 @@ Javascript
         12. Trace
                 console.trace(); // it will show the call stack, 
                     Trace will give us the code pointer from which the function called.
+        
+        
+        13. SetTimeout vs SetInterval
+            these fun will help us to understand the closure. so we are discussing it here.
+            these two function are not by default given to us by JS. (in the official docs --> EcmaScript)
+                13.1 SetTimeout
+                        it is a function that helps us to execute some task once after some time. 
+                            console.log("start");
+                            setTimeout(function execution() {
+                                console.log("task completed");
+                            }, 1000);
+                            console.log("end");
+                        when we execute this code in console, we will also get the id. 
+
+                        /***************************************************************/
+
+                            usecase of the id which we are getting from setTimeout.
+                                let id = setTimeout(function execution() {
+                                    console.log("task completed");
+                                }, 10000);
+
+                                        like after 5 sec we don't want to execute the above timeout so for stopping it we can use clearTimeout(id); & this method wants the id of the timeout which we want to stop.
+                                let id2 = setTimeout(function execution() {
+                                    console.log("task completed");
+                                     clearTimeout(id); // it will clear the timeout.
+                                }, 5000);
+                                                 
+
+
+                13.2 SetInterval
+                        it is a function that helps us to execute some task again & again after given interval.
+        14. Callbacks
+                to understand the setTimeout & setInterval we need to understand the concept of callbacks.
+                    A callback is an function that is passed to another function. (a function getting call inside another function)
+
+
+        15. Closures
+
                 
         
 

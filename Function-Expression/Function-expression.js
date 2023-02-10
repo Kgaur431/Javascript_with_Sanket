@@ -5,7 +5,7 @@ function fun() {
 
 // function expression --> if the first word is not starting with function keyword then it is function expression
 
-let gun = function () {
+let gun = function exec() {
     
     }
 
