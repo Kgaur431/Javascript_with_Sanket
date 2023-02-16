@@ -139,6 +139,46 @@ Javascript
 
         15. Closures
 
+        16. How Js handles Async operations ?
+            1. Js is a single threaded language.
+            2. Js by default only support synchronous code execution.
+                2.1 JS will only code line by line. it can not take jump from one line to another line.
+                2.2 whatever amount of time is going to take it has to give that piece of code that much amount of time. & remaining 
+                    code be wait. 
+                    Note:- 
+                            the above property of synchronous code execution only works for operation natively known to JS.
+                                like:- for loop --> it is a native operation of JS. & for native piece of code js will do synchronous code execution. it does not matter how much time it will take. it is bound to synchronous code execution.
+            
+        Q1. if setTimeout is not feature of JS. then how the code executed.
+
+        Q2. if setTimeout is not feature of JS. then how we are able to use it in js fie.
+            there is an concept of JS runtime.
+                JS is alone very week. loop, closure, switch-case ... etc.  
+                JS runtime provides the environment to run the JS code. where js gets feature like JSengine in order to run a js program. 
+                Browser is an runtime. it is give an lots of facitlitties for a js program to run. it gives js based features.
+                the extra set of feature that actually js make it powerfull are the runtime based feature. 
+                    like setTimeout(); --> the runtime is giving this feature to interact with timer that is inside the browser.
+                    like document.getElementById(); --> this is not known to js. but browser runtime gives this feature to js.
+                    JS will need a execution environment. like it is parse the code or it is deleting the code. so browser act an runtime container. so browser is giving the dom api.  
+
+                whenever we open an HTMl page in browser it render in the form of  DOM tree. 
+                    DOM tree is a tree structure.
+                browser gives us the feature to interact with the DOM tree. 
+                browser gives us the dom api. 
+                    function --> document.getElementById(); this fun is not known to js. 
+                            this feature is given by browser.
+                    setTimeout() --> timer based functionality. its to interact with timer that inside the browser.
+                
+                Now we know that runtime also provides functionality to js but how js handles it?
+
+                the extra feature of js runtime is make js powerfull. 
+
+                In 2009, Ryan Dahl created Node.js. he tried to run js outside the browser in new runtime environment. 
+                    Node.js is a runtime. it is not a browser. it is a runtime.
+                    instead of browser based feature it gives us the feature of file system, process that we can't access in browser.
+
+
+
                 
         
 
