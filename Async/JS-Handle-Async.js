@@ -20,7 +20,7 @@ console.log("Finishing app");
 /**
  * 
  * it execute, we get call stack & apart from that we get two more things.
- * 1. Event Queue
+ * 1. Event Queue --> it is kind of waiting area. where all the callback function will reside.
  * 2. Event Loop --> It is kind of infinite loop.
  *                  what it does ?
  *                      it again & again check the condtions. 
