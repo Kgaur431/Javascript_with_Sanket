@@ -177,6 +177,149 @@ Javascript
                     Node.js is a runtime. it is not a browser. it is a runtime.
                     instead of browser based feature it gives us the feature of file system, process that we can't access in browser.
 
+            Runtime also give the Synchronous features. 
+        
+        17. Console.log
+                it is not by default part of EcmaScript. it is a feature provided by runtime.
+                    console.log(); --> it is run time based feature in node js documentation. 
+                
+            We cannot predict how console.log() works ? why
+                because there is different version of runtime.
+                    so there might be a case that the chorome that i am running is older version that the chorome other is running. 
+                        version by version runtime is improving.
+                    eg:- we can definately say that the async task will be executed in the future. it will take some time. 
+                            the event loop, event queue will come into the picture. 
+                        if there is sync code that is not depend on event queue & event loop. if runtimes wants then all of the features either of async or synchronous code they both should go into event queue.
+                        if runtime demands only the async code will go into event queue. then only the async code will go into event queue.
+
+                        so it depends on internally how runtime work.
+            
+            there is  a reason that why some websites are saying that please open in chrome or specific browser.
+                things are different in chrome, things are different in firefox. ... 
+                because how those runtime is working. & there behaviour is different.
+
+                & we don't know how the runtime is working. so we can't predict how the console.log() works.
+            
+            when we do console.log in node js 
+                internally it call the process.stdout.write(); 
+                    link --> https://nodejs.org/dist/latest-v19.x/docs/api/process.html#a-note-on-process-io
+                        (stream means reading input & writing output)
+
+            so in the production code we are using logging library becuase the behaviour of console.log is changing from runtime to runtime. 
+                so we are using logging library. 
+                    like winston, bunyan, pino, ... etc.
+
+                              obj = {
+                                    name: "sachin",
+                                    };
+                                    console.log(obj);
+                                    obj.name = "tendulkar";
+                                    console.log(obj);
+                                this above code will give updated value of obj inside the browser console. & it will not give the updated value in node js console. 
+                                 
+
+        18. Call Stack
+                link --> http://latentflip.com/loupe/?code=JC5vbignYnV0dG9uJywgJ2NsaWNrJywgZnVuY3Rpb24gb25DbGljaygpIHsKICAgIHNldFRpbWVvdXQoZnVuY3Rpb24gdGltZXIoKSB7CiAgICAgICAgY29uc29sZS5sb2coJ1lvdSBjbGlja2VkIHRoZSBidXR0b24hJyk7ICAgIAogICAgfSwgMjAwMCk7Cn0pOwoKY29uc29sZS5sb2coIkhpISIpOwoKc2V0VGltZW91dChmdW5jdGlvbiB0aW1lb3V0KCkgewogICAgY29uc29sZS5sb2coIkNsaWNrIHRoZSBidXR0b24hIik7Cn0sIDUwMDApOwoKY29uc29sZS5sb2coIldlbGNvbWUgdG8gbG91cGUuIik7!!!PGJ1dHRvbj5DbGljayBtZSE8L2J1dHRvbj4%3D
+        
+        19. Disadvantage of Callbacks. 
+                1. Callback hell
+                    it is like pyramid of callback. like inside the callback we are calling another callback. 
+                    solution of design problem of callback hell is promise.
+                2. inversion of control.
+                    if there is some part of code whose control we are passing to someone else (like other function or other api) & we don't know how that part will be executed. 
+                        this problem is known as inversion of control.
+                        like, we are loss the control of our business logic. 
+
+        20. Promise (we can say promise introduce to remove the disadvantage of callback) 
+                Promise are special JS object that are also considered readiblity enhancers. 
+                they get immediately returned from those function where we setup to return a promise.  where we written like return promise. so it immediately return the promise object. 
+
+                Promise is act as Placeholder, for the data we hope to get back from the some future task. 
+                    like future task, that is completed in future. & after task will done then it will return some value. 
+                        so promise is act as placeholder for that value till the time value is not available.\
+                    
+                we also attach the functionlity that once the future task will be done then i will execute some functionality so we can attch these kind of functionality to the promise object. & promise object automatically handle execution of this functionality. 
+
+                Promise can do two things
+                    1. one inside js
+                        1.1  it signs up the process required to run in the runtime & gives a placeholder in js, which has a value property. 
+                            Eg:- 
+                               
+                    2. one outside js
+                
+                How to create an Promise?
+                    How to create the object?
+                    What are the properties involve?
+                        How Promise work behind the scene?
+                         the promise object we create has 4 major properties. 
+                                1. status/state
+                                        it shows current status of promise object.
+                                            every promise object has 3 status/state
+                                                1. pending
+                                                        there is some process is going on. & the process is yet to be completed.
+                                                2. fulfilled
+                                                        whatever processing the promise has involved in that process is completed successfully.
+                                                3. rejected
+                                                        whatever processing the promise has involved in that process there is some error occured. & the process is not completed successfully.
+                                                        
+                                                    one of theses 3 status/state will be there.
+                                2. value
+                                        when status of the promise is pending this value propety is undefined.
+                                        the moment promise is resolved the value property is updated from undefined to new value(whatever value that we are expecting once the processing is done called resolved value).
+                                                so the value property is act like a placeholder till the time the promise is finished.
+                                                    (means, till the time promise is not resolved the value property is undefined. & once the promise is resolved then the value property is automatically get populated with the resolved value, this value is act as a placeholder).
+                                        
+                                3. onFulfillment
+                                        this is an array. which contains function that we attach to our promise object.
+                                            how to attach?
+                                                to a promise object we can attach some function using .then() function.
+                                            (means whatever function we try to attach with promise object this onfulfillment array will store all those function).
+                                            when the value property is updated from undefined to the new value, Js give chance to the attached function one by one with the value property as there argument.
+                                                (if there is no piece of code in the call stack & global code).
+
+                                        
+                                4. onRejected
+                                        this is an array. which contains function that we attach to our promise object.
+                                            how to attach?
+                                                to a promise object we can attach some function using .catch() function.
+                                            (means whatever function we try to attach with promise object this onRejected array will store all those function).
+                                            when the value property is updated from undefined to the new value, Js give chance to the attached function one by one with the value property as there argument.
+                                                (if there is no piece of code in the call stack & global code).
+                
+                Promise is js object & it is known to  ESCMA script so js will be wait till the time promise is either resolved or rejected. 
+                    means, promise will stop the synchronous code execution. 
+
+                creation of Promise obj is synchronous.
+
+                    (promise is like when me & my friend went to a restaurant & we ordered food. me & my friend  decided that will divide the bill equally. right now i am giving the money & my friend has promise me that he will give me the money back. so promise is like that. & the money is like the value property of promise object. the state of this promise is pending. 
+                    if he will give me the money back then the state of this promise will be resolved. & if he will not give me the money back then the state of this promise will be rejected.)
+                
+                How to consume a Promise?
+                    How to consume the object?
+                        The promise consumption is the main beauty, using which we will avoid inversion of control. 
+                        whenever we call a function, returning a promise. we will get promise obj which is like any js object 
+                        that we can store in a variable. 
+
+                    Now, let result = fetchCustom2("https://www.google.com");
+    
+
+                Now, does js wait here for promise to be resolved or rejected?
+                    
+                    
+                we can use .then() funciton on the promise object, to bind the funcitons we want to execute once we fullfilled a promise.
+                    the .then() takes function as an argument that we want to execute after promise fullfilled. &  the argument 
+                        funciton takes the value property as parmaeter. 
+
+
+                
+
+
+ k
+   
+                     
+                
+                    
+
 
 
                 
