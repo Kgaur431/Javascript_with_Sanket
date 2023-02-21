@@ -136,7 +136,7 @@ l       et filename = saveData(result);
         return value;
     }) //.then() returns a new promise object. so we can call again .then() on it.
     .then(function processu(value) {
-        let filename =  uploadFile(value, "https://www.facebook.com");
+        let filename =  saveData(value);
         return filename;
     })
     .then(function process(value) {
@@ -144,6 +144,7 @@ l       et filename = saveData(result);
         return uploadResponse;
     })
 
+    // this above flow of .then will be continue. 
     console.log("done");
 
 
