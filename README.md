@@ -309,12 +309,79 @@ Javascript
                 we can use .then() funciton on the promise object, to bind the funcitons we want to execute once we fullfilled a promise.
                     the .then() takes function as an argument that we want to execute after promise fullfilled. &  the argument 
                         funciton takes the value property as parmaeter. 
+        
+        21. Async & Await
+                    async fun will always return a promise object.
+                        await will give us the resolved value of the promise object.
+                    we can declare a function as async function. 
+                        async function funcName() {
+                            //code
+                        }
+                        if we declare a function async, it does the following.
+                            1. it allow the use of await keyword inside the function.
+                            2. if we declare a function async then it allow consumption of a promise using await. 
+                            3. an async function always always converts the return value to a promise. 
+                                eg:- whatever we can return like null, "kartik", 1000, undefined .. it will convert into promise. 
+
+                    what asyn & await will do?
+                        whatever .then() is doing for us, await will do the same thing for us.
+                         just syntax is different. 
+                            .then() is used to consume the promise. 
+                            await is used to consume the promise.
+                        
+                        Inside async function things look synchoronous but over all its asynchoronous
+                            so JS will only treat sync code that js knows to itself.
+                        
+                    
+                    let val1 = await fetchCustom2("https://www.google.com");
+                        till the fetchCustom2 get fullfilled , the js  will through the code pointer to outside the function or from where the async function is called. & (whenever we will get the await inside in sequence manner then js will through the code pointer to the outside of the function. & js will execute the code sychronously.) --> it will happen everytime. 
+            
+
+            JS will not wait for any asynchronous task. 
+                    it will put the code pointer till the promise fullfilled. & mean while js will execute the flow of code sychronously. 
+
+            Notice:- 
+                    the moment we have used await does not matter weather the promise object is yet to be resolve or already resolved.   await does not matter. 
+                        await will always wait for at initially instance of time assume that its an unresolved promise. although we have resolved promise but still await will wait for the promise to be resolved. 
+
+            assume this below promise object is an for val1
+                {
+                    status:
+                    value:
+                    onFulfillment: []
+                    onRejected: []
+                }
 
 
+        22. chaning .then() with one promise object instead of chaning to the return value of .then()
+                let val1 = fetchCustom2("https://www.google.com");
+                 val1.then(function() {
+                    //code
+                });
+                    val1 is a promise object. 
+                        when we initialise val1 = fetchCustom2("https://www.google.com"); it will create the promise object(line 346) immediately 
+
+                so when we intialise  val1 = fun. its create a this obj immediately.
+            
+
+
+                Conversion to Promise
+                        async function fun() {
+                            const y = await 20;
+                            console.log(y);
+                        }
+                    here, the value is not an promise object. but we are using await keyword. so js 
+        
+        read more about async & await from --> developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function.
+        
+           
+
+
+        
                 
 
 
- k
+ 
    
                      
                 
@@ -322,8 +389,7 @@ Javascript
 
 
 
-                
-        
+    
 
 
           
