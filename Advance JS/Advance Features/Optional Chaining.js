@@ -109,3 +109,17 @@
   // Conclusion :- first check if the object has defined or not, then check if it has the property or not and then execute the property. 
                   // if we have access anything which might get null or undefined then use ?. operator before accessing it. 
       
+
+/**
+       courseDto.domain?.entitytype:- 
+
+          the code you shared is checking whether the domain section exists within the courseDto object. 
+          If it does, then the code will try to access the entitytype information inside that section.
+
+          However, suppose for some reason the domain section doesn't exist (maybe it wasn't included in the data passed to the courseDto object).
+          In that case, rather than throwing an error, the code will simply return null.
+
+          So basically, this code is just checking if a particular piece of information exists within an object, and if it does, it tries to retrieve it.
+          But if it doesn't exist, it doesn't cause any errors and just returns null.
+ 
+*/
