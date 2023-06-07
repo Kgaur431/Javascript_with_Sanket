@@ -117,3 +117,48 @@ const person  = {
 
 
      */
+
+                      // console.log("person:- ", ...person);   // it will give error because person is not iterable.
+                       // when we can do like this ...person, it means we are trying to spread the person object into individual elements
+                       /**
+                        *   how can we spread the person
+                        *     1. we can spread the person object into individual elements 
+                        *       by using Object.keys(person) or Object.values(person) or Object.entries(person)
+                        *        but it will not spread the nested object.
+                        *           Example:-
+                        *             console.log("Object.keys(person): ", Object.keys(person));   // ["name", "age", "address"]
+                        *             console.log("Object.values(person): ", Object.values(person)); // ["John Doe", 30, {…}]
+                        *             console.log("Object.entries(person): ", Object.entries(person)); // [["name", "John Doe"], ["age", 30], ["address", {…}]]
+                        *       
+                        *     2. we can spread the nested object by using spread operator.
+                        *          Example:-
+                        *      console.log("...person.address: ", ...person.address); it will give error because person.address is not iterable.
+                        */ 
+
+
+      console.log("Object.keys(person): ", Object.keys(person));   // ["name", "age", "address"]
+      console.log("Object.values(person): ", Object.values(person)); // ["John Doe", 30, {…}]
+     console.log("Object.entries(person): ", Object.entries(person)); // [["name", "John Doe"], ["age", 30], ["address", {…}]]
+
+     const person2 = {...person};   // it will create a new object.
+     console.log("person2: ", person2);   // {name: "John Doe", age: 30, address: {…}}
+
+
+     /**
+      *     const person2 = {person};
+      *       person2:  {
+                  person: {
+                    name: 'John Doe',
+                    age: 30,
+                    address: { city: 'New York', state: 'NY', zipcode: [Object] }
+                  }
+                }
+
+                const person2 = {...person};
+                person2:  {
+                      name: 'John Doe',
+                      age: 30,
+                      address: { city: 'New York', state: 'NY', zipcode: { pincode: '123456' } }
+                    }
+
+      */
