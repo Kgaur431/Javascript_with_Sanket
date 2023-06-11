@@ -1,0 +1,5 @@
+Sn. No              Topics                      (From) Time          (To) Time      Reason 
+1.                  Symbol                     00:03:25             00:10:19         Not useful for now.  
+2.                  Generator & Iterators      not started 
+3.                  Bind                       not started
+4.                  Call & Apply               not started

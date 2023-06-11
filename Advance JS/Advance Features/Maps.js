@@ -2,6 +2,9 @@
  *    Maps:-
  *      - Maps are data structure that we can use to map values to keys.
  *      - Maps are iterable. each key is a function that takes a value and returns a corresponding value for that key.
+ * 
+ *    what is iterable ?
+ *      - iterable means we can loop over it.
  *
  */
 
@@ -26,7 +29,7 @@ const currencyies = [
 ];
 
 const currencyy = currencyies.find((c) => 'India' === c.name);
-console.log(currencyy);
+console.log(currencyy); // {name: "India", currency: "Rupee"}
 
 // Creating a Basic Map
 const map = new Map();
